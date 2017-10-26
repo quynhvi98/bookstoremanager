@@ -12,24 +12,27 @@
             <br />
             Tên sản phẩm:
             <asp:TextBox ID="name" runat="server" Width="300px" class="form-control form-large search-input"></asp:TextBox>
-            <br />
+          
+            <asp:RequiredFieldValidator ControlToValidate="name" ID="RequiredFieldValidator2" runat="server" ErrorMessage="Vui Lòng Nhập Tên sản phẩm"></asp:RequiredFieldValidator><br />
             Giá sản phẩm:
             <asp:TextBox ID="price" runat="server"  Width="300px" class="form-control form-large search-input"></asp:TextBox>
-            <br />
+           <asp:RequiredFieldValidator ControlToValidate="price" ID="RequiredFieldValidator3" runat="server" ErrorMessage="Vui Lòng Nhập Giá sản phẩm:"></asp:RequiredFieldValidator> <br />
             Số trang:
             <asp:TextBox ID="Pages" runat="server"  Width="300px" class="form-control form-large search-input"></asp:TextBox>
-            <br />
+           <asp:RequiredFieldValidator  ControlToValidate="Pages" ID="RequiredFieldValidator4" runat="server" ErrorMessage="Vui Lòng Nhập  Số trang"></asp:RequiredFieldValidator> <br />
             Hàng trong kho:
             <asp:TextBox ID="repository" runat="server"  Width="300px" class="form-control form-large search-input"></asp:TextBox>
-            <br />
+          <asp:RequiredFieldValidator ControlToValidate="repository" ID="RequiredFieldValidator5" runat="server" ErrorMessage="Vui Lòng Nhập Hàng trong kho"></asp:RequiredFieldValidator>  <br />
             Cân nặng:<asp:TextBox ID="weight" runat="server"  Width="300px" class="form-control form-large search-input"></asp:TextBox>
+             <asp:RequiredFieldValidator ControlToValidate="weight" ID="RequiredFieldValidator1" runat="server" ErrorMessage="Vui Lòng Nhập Cân nặng"></asp:RequiredFieldValidator>  <br />
+         
             <br />
             Nội dung:
             <asp:TextBox ID="conten" runat="server"  Width="300px" class="form-control form-large search-input"></asp:TextBox>
-            <br />
+           <asp:RequiredFieldValidator ControlToValidate="conten" ID="RequiredFieldValidator6" runat="server" ErrorMessage="Vui Lòng Nhập Nội dung"></asp:RequiredFieldValidator> <br />
             Trạng thái:
             <asp:TextBox ID="stt" runat="server"  Width="300px" class="form-control form-large search-input"></asp:TextBox>
-
+            <asp:RequiredFieldValidator  ControlToValidate="stt" ID="RequiredFieldValidator7" runat="server" ErrorMessage="Vui Lòng Nhập  Trạng thái"></asp:RequiredFieldValidator>
             <br />
             <div style="padding-left:60px">
                 <asp:CheckBox ID="Hot" runat="server" Text="Hot" />
@@ -62,7 +65,8 @@
             </asp:DropDownList>
             <br /><br />
             <div style="padding-left:80px">
-                <asp:FileUpload ID="FileUpload1" accept=".png,.jpg,.jpeg,.gif" AutoPostBack="false" runat="server" onchange="readURL(this);"/><br />
+                <asp:FileUpload ID="FileUpload1" accept=".png,.jpg,.jpeg,.gif" AutoPostBack="false" runat="server" onchange="readURL(this);"/>
+           <br />
             <asp:Image ID="Image1" runat="server" Width="208px" Height="259px" />
                 <img id="imgDisplay" />
                 <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
