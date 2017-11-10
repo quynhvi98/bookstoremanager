@@ -1171,6 +1171,9 @@
           <s:element minOccurs="1" maxOccurs="1" name="type" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="author" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="price_pages" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="producer" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TypeName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AuthorName" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:element name="AddProductResponse">
@@ -1186,17 +1189,15 @@
       <s:element name="getListProductResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="getListProductResult">
-              <s:complexType>
-                <s:sequence>
-                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
-                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
-                </s:sequence>
-              </s:complexType>
-            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="getListProductResult" type="tns:ArrayOfProduct" />
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="ArrayOfProduct">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Product" nillable="true" type="tns:Product" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="getListProductToEdit">
         <s:complexType>
           <s:sequence>

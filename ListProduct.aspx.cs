@@ -15,7 +15,7 @@ public partial class ListProduct : System.Web.UI.Page
         if (!IsPostBack)
         {
             ProductModel dt = new ProductModel();
-            ListView.DataSource = dt.getListProduct();
+            ListView.DataSource = service.getListProduct();
             ListView.DataBind();
         }
     }

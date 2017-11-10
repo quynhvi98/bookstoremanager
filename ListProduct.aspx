@@ -24,13 +24,13 @@
         <br />
         <asp:GridView ID="ListView" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" Width="1043px" AllowPaging="True" OnPageIndexChanging="ListView_PageIndexChanging" Height="403px">
             <Columns>
-                <asp:BoundField DataField="_id" HeaderText="Mã SP" />
-                <asp:BoundField DataField="_name" HeaderText="Tên sản phẩm" />
-                <asp:BoundField DataField="_price" HeaderText="Đơn giá" />
-                <asp:BoundField DataField="_status" HeaderText="Tình trạng" />
-                <asp:BoundField DataField="NhaXuatBan" HeaderText="Nhà xuất bản" />
-                <asp:BoundField DataField="productType" HeaderText="Thể loại" />
-                <asp:BoundField DataField="_name_author" HeaderText="Tác giả" />
+                <asp:BoundField DataField="id" HeaderText="Mã SP" />
+                <asp:BoundField DataField="name" HeaderText="Tên sản phẩm" />
+                <asp:BoundField DataField="price" HeaderText="Đơn giá" />
+                <asp:BoundField DataField="status" HeaderText="Tình trạng" />
+                <asp:BoundField DataField="producer" HeaderText="Nhà xuất bản" />
+                <asp:BoundField DataField="TypeName" HeaderText="Thể loại" />
+                <asp:BoundField DataField="AuthorName" HeaderText="Tác giả" />
                 <asp:TemplateField>
                     <ItemTemplate>
                         <asp:ImageButton ID="ImageButton1" runat="server" Height="35px" ImageUrl="~/image/icons8-Eye-15.png" Width="41px" OnClick="ImageButton1_Click1" />
