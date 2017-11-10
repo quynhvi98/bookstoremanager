@@ -7,10 +7,10 @@
         <div style="height: 205px">
             <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" class="btn btn-default dropdown-toggle btn-filter">
                 <asp:ListItem Value="">Chọn</asp:ListItem>
-                <asp:ListItem Value="1">Tổng Doanh Thu Bán Theo Sản Phẩm</asp:ListItem>
-                <asp:ListItem Value="2">Tổng Doanh Thu Theo Loại Sách</asp:ListItem>
-                <asp:ListItem Value="3">Tổng Doanh Thu Từng Loại Sách Tháng Hiện Tại</asp:ListItem>
-                <asp:ListItem Value="4">Số Lượng tồn kho</asp:ListItem>
+                <asp:ListItem Value="1">Tổng doanh thu bán theo sản phẩm</asp:ListItem>
+                <asp:ListItem Value="2">Tổng doanh thu theo loại sách</asp:ListItem>
+                <asp:ListItem Value="3">Tổng doanh thu từng loại sách tháng hiện tại</asp:ListItem>
+                <asp:ListItem Value="4">số lượng tồn kho</asp:ListItem>
                 <asp:ListItem Value="5">Theo mã khách hàng</asp:ListItem>
                 <asp:ListItem Value="6">Theo mã khách hàng</asp:ListItem>
                 <asp:ListItem Value="7">Theo mã khách hàng</asp:ListItem>
