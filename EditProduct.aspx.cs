@@ -5,9 +5,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using localhost;
 
 public partial class EditProduct : System.Web.UI.Page
 {
+    Service service = new Service();
     private static String imgcu;
     private String idGoc;
     protected void Page_Load(object sender, EventArgs e)
@@ -28,23 +30,23 @@ public partial class EditProduct : System.Web.UI.Page
         ProductType.Items.Clear();
         author.Items.Clear();
         List<String> list = new List<string>();
-        ProducerModel producerModel = new ProducerModel();
-        list = producerModel.GetlistProducer();
+        //ProducerModel producerModel = new ProducerModel();
+        list = service.GetlistProducer().ToList();
         foreach (var item in list)
         {
             @Producer.Items.Add(item);
         }
-        ProductTypeModel productTypeModel = new ProductTypeModel();
+        //ProductTypeModel productTypeModel = new ProductTypeModel();
         List<String> list1 = new List<string>();
-        list1 = productTypeModel.GetlistProductType();
+        list1 = service.GetlistProductType().ToList();
         foreach (var item in list1)
         {
             ProductType.Items.Add(item);
         }
 
-        AuthorModel authorModel = new AuthorModel();
+        //AuthorModel authorModel = new AuthorModel();
         List<String> list2 = new List<string>();
-        list2 = authorModel.GetlistAuthor();
+        list2 = service.GetlistAuthor().ToList();
         foreach (var item in list2)
         {
             author.Items.Add(item);
@@ -53,8 +55,8 @@ public partial class EditProduct : System.Web.UI.Page
 
         String id = Request.QueryString["id"];
         IDProduct.Text = id;
-        ProductModel productModel = new ProductModel();
-        DataTable datable = productModel.getListProductToEdit(id);
+        //ProductModel productModel = new ProductModel();
+        DataTable datable = service.getListProductToEdit(id);
         foreach (DataRow item in datable.Rows)
         {
             name.Text = item[1].ToString();
@@ -70,8 +72,8 @@ public partial class EditProduct : System.Web.UI.Page
             ProductType.SelectedValue = item[10].ToString();
             author.SelectedValue = item[11].ToString();
         }
-        CategoryProductModel categoryProductModel = new CategoryProductModel();
-        List<String> listCategoryProductModel = categoryProductModel.GetListCategoryProductID(id);
+        //CategoryProductModel categoryProductModel = new CategoryProductModel();
+        List<String> listCategoryProductModel = service.GetListCategoryProductID(id).ToList();
         for (int i = 0; i < listCategoryProductModel.Count; i++)
         {
             switch (listCategoryProductModel[i])
@@ -97,7 +99,7 @@ public partial class EditProduct : System.Web.UI.Page
 
     protected void Sua_Click(object sender, EventArgs e)
     {
-        Product product = new Product();
+       localhost.Product product = new localhost.Product();
         product.id = IDProduct.Text;
         product.name = name.Text;
         product.price = Decimal.Parse(price.Text);
@@ -114,14 +116,14 @@ public partial class EditProduct : System.Web.UI.Page
         product.weight = double.Parse(weight.Text);
         product.content = conten.Text;
         product.status = stt.Text;
-        ProducerModel producerModel = new ProducerModel();
-        product.idProducer = producerModel.GetIdProducerByName(@Producer.SelectedValue);
-        ProductTypeModel productTypeModel = new ProductTypeModel();
-        product.type = productTypeModel.GetIdProductTypeByName(ProductType.SelectedValue);
-        AuthorModel authorModel = new AuthorModel();
-        product.author = authorModel.GetIdProductTypeByName(author.SelectedValue);
-        ProductModel productModel = new ProductModel();
-        if (productModel.updateProduct(product, idGoc))
+        //ProducerModel producerModel = new ProducerModel();
+        product.idProducer = service.GetIdProducerByName(@Producer.SelectedValue);
+       // ProductTypeModel productTypeModel = new ProductTypeModel();
+        product.type = service.GetIdProductTypeByName(ProductType.SelectedValue);
+        //AuthorModel authorModel = new AuthorModel();
+        product.author = service.GetIdProductTypeByName(author.SelectedValue);
+       // ProductModel productModel = new ProductModel();
+        if (service.updateProduct(product, idGoc))
         {
             if (FileUpload1.HasFile)
             {
@@ -130,9 +132,9 @@ public partial class EditProduct : System.Web.UI.Page
             }
 
             List<String> list = new List<String>();
-            CategoryModel categoryModel = new CategoryModel();
-            CategoryProductModel categoryProductModel = new CategoryProductModel();
-            categoryProductModel.delCategoryProductID(product.id);
+           // CategoryModel categoryModel = new CategoryModel();
+           CategoryProductModel categoryProductModel = new CategoryProductModel();
+            service.delCategoryProductID(product.id);
             for (int i = 0; i < 3; i++)
             {
                 switch (i)
@@ -140,20 +142,20 @@ public partial class EditProduct : System.Web.UI.Page
                     case 0:
                         if (Hot.Checked)
                         {
-                            list.Add(categoryModel.GetIdProductTypeByName("Hot"));
+                            list.Add(service.GetIdProductTypeByName_CateModel("Hot"));
                         }
 
                         break;
                     case 1:
                         if (New.Checked)
                         {
-                            list.Add(categoryModel.GetIdProductTypeByName("New"));
+                            list.Add(service.GetIdProductTypeByName_CateModel("New"));
                         }
                         break;
                     case 2:
                         if (Sale.Checked)
                         {
-                            list.Add(categoryModel.GetIdProductTypeByName("Sale"));
+                            list.Add(service.GetIdProductTypeByName_CateModel("Sale"));
                         }
                         break;
                 }

@@ -14,7 +14,7 @@ public class Customer
         // TODO: Add constructor logic here
         //
     }
-    public string id { get; set; }
+    public int id { get; set; }
     public String email { get; set; }
     public String user { get; set; }
     public String password { get; set; }

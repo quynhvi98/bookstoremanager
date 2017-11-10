@@ -4,20 +4,20 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using localhost;
 
 public partial class ProductStatistics : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-       
+
     }
 
-
-
+    Service service = new Service();
     protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
     {
         BoundField boundField = new BoundField();
-        ProductModel product1 = new ProductModel();
+        //ProductModel product1 = new ProductModel();
         GridView1.Columns.Clear();
         switch (DropDownList1.SelectedValue)
         {
@@ -38,7 +38,7 @@ public partial class ProductStatistics : System.Web.UI.Page
                 boundField.HeaderText = "Tổng số tiền bán được";
                 GridView1.Columns.Add(boundField);
 
-                GridView1.DataSource = product1.getListTongDoanhThuBanTheoSanPham();
+                GridView1.DataSource = service.getListTongDoanhThuBanTheoSanPham();
                 GridView1.DataBind();
                 break;
             case "2":
@@ -50,7 +50,7 @@ public partial class ProductStatistics : System.Web.UI.Page
                 boundField.DataField = "_name";
                 boundField.HeaderText = "Loại Sách";
                 GridView1.Columns.Add(boundField);
-                GridView1.DataSource = product1.getListTongDoanhThuBanTheoType();
+                GridView1.DataSource = service.getListTongDoanhThuBanTheoType();
                 GridView1.DataBind();
                 break;
             case "3":
@@ -66,7 +66,7 @@ public partial class ProductStatistics : System.Web.UI.Page
                 boundField.DataField = "thang";
                 boundField.HeaderText = "Tháng";
                 GridView1.Columns.Add(boundField);
-                GridView1.DataSource = product1.getListTongDoanhThuBanTheoThangNayVoiType();
+                GridView1.DataSource = service.getListTongDoanhThuBanTheoThangNayVoiType();
                 GridView1.DataBind();
                 break;
             case "4":
@@ -78,11 +78,9 @@ public partial class ProductStatistics : System.Web.UI.Page
                 boundField.DataField = "tongsoluong";
                 boundField.HeaderText = "Số Lượng Kho";
                 GridView1.Columns.Add(boundField);
-                GridView1.DataSource = product1.getSoLuongCoTrongKhoHang();
+                GridView1.DataSource = service.getSoLuongCoTrongKhoHang();
                 GridView1.DataBind();
                 break;
         }
     }
-
-    
 }

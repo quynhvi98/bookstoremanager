@@ -5,9 +5,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using localhost;
 
 public partial class ListProduct : System.Web.UI.Page
 {
+    Service service = new Service();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -20,12 +22,12 @@ public partial class ListProduct : System.Web.UI.Page
 
     protected void ImageButton1_Click1(object sender, ImageClickEventArgs e)
     {
-        ProductModel dt = new ProductModel();
+        //ProductModel dt = new ProductModel();
         GridViewRow gridViewRow = (GridViewRow)(sender as Control).Parent.Parent;
         int index = gridViewRow.RowIndex;
         String a = ListView.Rows[index].Cells[0].Text;
 
-        DataTable datable = dt.getListProductToEdit(a);
+        DataTable datable = service.getListProductToEdit(a);
         foreach (DataRow item in datable.Rows)
         {
             Label1.Text = item[0].ToString();
@@ -48,21 +50,21 @@ public partial class ListProduct : System.Web.UI.Page
 
     protected void btnSearch_Click(object sender, EventArgs e)
     {
-        ProductModel productModel = new ProductModel();
+        //ProductModel productModel = new ProductModel();
         string key_word = txtSearch.Text;
         if (TypeSearch.SelectedValue == "1")
         {
-            ListView.DataSource = productModel.SearchProduct(key_word, 1);
+            ListView.DataSource = service.SearchProduct(key_word, 1);
             ListView.DataBind();
         }
         else if (TypeSearch.SelectedValue == "2")
         {
-            ListView.DataSource = productModel.SearchProduct(key_word, 2);
+            ListView.DataSource = service.SearchProduct(key_word, 2);
             ListView.DataBind();
         }
         else
         {
-            ListView.DataSource = productModel.SearchProduct(key_word, 3);
+            ListView.DataSource = service.SearchProduct(key_word, 3);
             ListView.DataBind();
         }
     }
@@ -71,9 +73,9 @@ public partial class ListProduct : System.Web.UI.Page
 
     protected void ListView_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
-        ProductModel dt = new ProductModel();
+        //ProductModel dt = new ProductModel();
         ListView.PageIndex = e.NewPageIndex;
-        ListView.DataSource = dt.getListProduct();
+        ListView.DataSource = service.getListProduct();
         ListView.DataBind();
     }
 }

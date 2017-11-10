@@ -16,7 +16,7 @@ public class ProductModel :DataProcess
     public Boolean AddProduct(Product product)
     {
         String sql = " INSERT dbo.product ( " +
-            "[_id] ,[_name] , [_IMG] ,dbo.product.[_price_pages],[_price] ,[_pages],[_repository] ,[_weight] ,[_content] ,[_status] ,[_date] , [_year_of_creation] ,[_id_producer] ,[_type] ,[_author]) VALUES " +
+            "[_id] ,[_name] , [_IMG] ,dbo.product.[_price_pages],[_price] ,[_pages],[_repository] ,[_weight] ,[_content] ,[_status] ,[_date] , [_year_of_creation] ,[_id_producer] ,[_type] ,[_author_id]) VALUES " +
             " (@id, @name, @IMG, @_price_pages, @price ,  @pages ,@repository, @weight ,@content , @status , GETDATE() , @yearOfCreation ,@_id_producer , @type,@author)";
         SqlCommand cmd = new SqlCommand(sql, GetConnection());
         cmd.Parameters.AddWithValue("id", product.id);
@@ -45,7 +45,7 @@ public class ProductModel :DataProcess
     public DataTable getListProduct()
     {
         string sql = "SELECT product._id,product._name,_price,_status,producer._name as 'NhaXuatBan',product_type._name as productType,_name_author,_repository" +
-            " FROM BookASMWAD.dbo.product JOIN BookASMWAD.dbo.producer on product._id_producer = producer._id JOIN BookASMWAD.dbo.product_type on product._type = product_type._id JOIN BookASMWAD.dbo.author on product._author = author._id";
+            " FROM BookASMWAD.dbo.product JOIN BookASMWAD.dbo.producer on product._id_producer = producer._id JOIN BookASMWAD.dbo.product_type on product._type = product_type._id JOIN BookASMWAD.dbo.author on product._author_id = author._id";
         SqlDataAdapter da = new SqlDataAdapter(sql, GetConnection());
         DataTable dt = new DataTable();
         da.Fill(dt);

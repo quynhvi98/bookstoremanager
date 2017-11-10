@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+//using localhost;
 
 public partial class AddProducer : System.Web.UI.Page
 {
@@ -11,12 +12,11 @@ public partial class AddProducer : System.Web.UI.Page
     {
 
     }
-
+    //Service service = new Service();
     protected void btnAddProducer_Click(object sender, EventArgs e)
     {
         ProducerModel producerModel = new ProducerModel();
         Producer producer = new Producer();
-
         producer.name = txtProducerName.Text;
         producer.description = txtProducerDescription.Text;
         if (!(producerModel.HasIdProducer(producer)))

@@ -4,10 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using localhost;
 
 public partial class ListAuthor : System.Web.UI.Page
 {
 
+    Service service = new Service();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -17,8 +19,8 @@ public partial class ListAuthor : System.Web.UI.Page
     }
     private void loadData()
     {
-        DataProcess authorModel = new DataProcess();
-        GridView1.DataSource = authorModel.GetAuthorInformation();
+        //DataProcess authorModel = new DataProcess();
+        GridView1.DataSource = service.GetAuthorInformation();
         GridView1.DataBind();
     }
 
@@ -36,16 +38,16 @@ public partial class ListAuthor : System.Web.UI.Page
 
     protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
-        Author author = new Author();
-        AuthorModel authorModel = new AuthorModel();
+        localhost.Author author = new localhost.Author();
+        //AuthorModel authorModel = new AuthorModel();
 
         string id = GridView1.DataKeys[e.RowIndex].Values[0].ToString();
-        author.id = id;
+        author.id_author = int.Parse(id);
         TextBox txtName = (TextBox)(GridView1.Rows[e.RowIndex].Cells[1].Controls[0]);
-        author.name = txtName.Text;
+        author.name_author = txtName.Text;
         TextBox txtDes = (TextBox)(GridView1.Rows[e.RowIndex].Cells[2].Controls[0]);
         author.description = txtDes.Text;
-        if (authorModel.UpdateAuthor(author))
+        if (service.UpdateAuthor(author))
         {
             GridView1.EditIndex = -1;
             loadData();
@@ -66,16 +68,16 @@ public partial class ListAuthor : System.Web.UI.Page
 
     protected void btnSearch_Click(object sender, EventArgs e)
     {
-        AuthorModel authorModel = new AuthorModel();
+        //AuthorModel authorModel = new AuthorModel();
         string key_word = txtSearch.Text;
         if (TypeSearch.SelectedValue == "1")
         {
-            GridView1.DataSource = authorModel.SearchAuthor(key_word, 1);
+            GridView1.DataSource = service.SearchAuthor(key_word, 1);
             GridView1.DataBind();
         }
         else
         {
-            GridView1.DataSource = authorModel.SearchAuthor(key_word, 2);
+            GridView1.DataSource = service.SearchAuthor(key_word, 2);
             GridView1.DataBind();
         }
     }

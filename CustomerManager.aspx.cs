@@ -4,9 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using localhost;
 
 public partial class CustomerManager : System.Web.UI.Page
 {
+    Service service = new Service();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -16,8 +18,8 @@ public partial class CustomerManager : System.Web.UI.Page
     }
     private void loadData()
     {
-        DataProcess dataCustomer = new DataProcess();
-        GridView1.DataSource = dataCustomer.GetCustomerInformation();
+     
+        GridView1.DataSource = service.GetCustomerInformation();
         GridView1.DataBind();
     }
 
@@ -35,15 +37,15 @@ public partial class CustomerManager : System.Web.UI.Page
 
     protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
-        Customer customer = new Customer();
+        localhost.Customer customer = new localhost.Customer();
         CustomerModel customerModel = new CustomerModel();
 
         string id = GridView1.DataKeys[e.RowIndex].Values[0].ToString();
-        customer.id = id;
+        customer.id = int.Parse(id);
         TextBox txtStatus = (TextBox)(GridView1.Rows[e.RowIndex].Cells[6].Controls[0]);
         customer.status = txtStatus.Text;
 
-        if (customerModel.UpdateCustomer(customer))
+        if (service.UpdateCustomer(customer))
         {
             GridView1.EditIndex = -1;
             loadData();
@@ -58,27 +60,27 @@ public partial class CustomerManager : System.Web.UI.Page
 
     protected void btnSearch_Click(object sender, EventArgs e)
     {
-        DataProcess dp = new DataProcess();
-        CustomerModel customerModel = new CustomerModel();
+        //DataProcess dp = new DataProcess();
+        //CustomerModel customerModel = new CustomerModel();
         string key_word = txtSearch.Text;
         if (TypeSearch.SelectedValue == "1")
         {
-            GridView1.DataSource = customerModel.SearchCustomer(key_word, 1);
+            GridView1.DataSource = service.SearchCustomer(key_word, 1);
             GridView1.DataBind();
         }
         else if (TypeSearch.SelectedValue == "2")
         {
-            GridView1.DataSource = customerModel.SearchCustomer(key_word, 2);
+            GridView1.DataSource = service.SearchCustomer(key_word, 2);
             GridView1.DataBind();
         }
         else if (TypeSearch.SelectedValue == "3")
         {
-            GridView1.DataSource = customerModel.SearchCustomer(key_word, 3);
+            GridView1.DataSource = service.SearchCustomer(key_word, 3);
             GridView1.DataBind();
         }
         else
         {
-            GridView1.DataSource = customerModel.SearchCustomer(key_word, 4);
+            GridView1.DataSource = service.SearchCustomer(key_word, 4);
             GridView1.DataBind();
         }
     }

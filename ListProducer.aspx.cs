@@ -4,9 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using localhost;
 
 public partial class ListProducer : System.Web.UI.Page
 {
+
+    Service service = new Service();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -16,8 +19,8 @@ public partial class ListProducer : System.Web.UI.Page
     }
     private void loadData()
     {
-        DataProcess dataProducer = new DataProcess();
-        GridView1.DataSource = dataProducer.GetProducerInformation();
+        //DataProcess dataProducer = new DataProcess();
+        GridView1.DataSource = service.GetProducerInformation();
         GridView1.DataBind();
     }
 

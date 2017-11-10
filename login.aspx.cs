@@ -4,9 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using localhost;
 
 public partial class login : System.Web.UI.Page
 {
+    Service service = new Service();
     protected void Page_Load(object sender, EventArgs e)
     {
         if(Request.Cookies["account"] != null)
@@ -20,8 +22,8 @@ public partial class login : System.Web.UI.Page
             Response.Write(UserAccount);
             if (Request.Cookies["account"] == null)
             {
-                DataProcess dataProcess = new DataProcess();
-                if (dataProcess.LoginWithAccAndPass(UserAccount, PasswordAccount))
+                //DataProcess dataProcess = new DataProcess();
+                if (service.LoginWithAccAndPass_DataProcess(UserAccount, PasswordAccount))
                 {
                     Response.Write("đăng nhập Thành công");
                     int cooki = UserAccount.GetHashCode() + PasswordAccount.GetHashCode();
@@ -58,8 +60,8 @@ public partial class login : System.Web.UI.Page
         var PasswordAccount = passwordAccount.Text;
         if (Request.Cookies["account"] == null)
         {
-            DataProcess dataProcess = new DataProcess();
-            if (dataProcess.LoginWithAccAndPass(UserAccount, PasswordAccount))
+           // DataProcess dataProcess = new DataProcess();
+            if (service.LoginWithAccAndPass_DataProcess(UserAccount, PasswordAccount))
             {
                 Response.Write("đăng nhập Thành công");
                 int cooki = UserAccount.GetHashCode() + PasswordAccount.GetHashCode();
