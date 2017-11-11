@@ -712,14 +712,7 @@
       <s:element name="SearchAuthorResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="SearchAuthorResult">
-              <s:complexType>
-                <s:sequence>
-                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
-                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
-                </s:sequence>
-              </s:complexType>
-            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchAuthorResult" type="tns:ArrayOfAuthor" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -872,7 +865,7 @@
       </s:element>
       <s:complexType name="Producer">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="id" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
         </s:sequence>
@@ -923,17 +916,15 @@
       <s:element name="SearchProducerResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="SearchProducerResult">
-              <s:complexType>
-                <s:sequence>
-                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
-                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
-                </s:sequence>
-              </s:complexType>
-            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="SearchProducerResult" type="tns:ArrayOfProducer" />
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="ArrayOfProducer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Producer" nillable="true" type="tns:Producer" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="GetListOrder">
         <s:complexType />
       </s:element>
@@ -1083,14 +1074,7 @@
       <s:element name="GetProducerInformationResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetProducerInformationResult">
-              <s:complexType>
-                <s:sequence>
-                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
-                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
-                </s:sequence>
-              </s:complexType>
-            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProducerInformationResult" type="tns:ArrayOfProducer" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1100,14 +1084,7 @@
       <s:element name="GetAuthorInformationResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetAuthorInformationResult">
-              <s:complexType>
-                <s:sequence>
-                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
-                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
-                </s:sequence>
-              </s:complexType>
-            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAuthorInformationResult" type="tns:ArrayOfAuthor" />
           </s:sequence>
         </s:complexType>
       </s:element>

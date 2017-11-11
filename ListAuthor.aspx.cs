@@ -20,7 +20,10 @@ public partial class ListAuthor : System.Web.UI.Page
     private void loadData()
     {
         //DataProcess authorModel = new DataProcess();
-        GridView1.DataSource = service.GetAuthorInformation();
+        List<localhost.Author> list = new List<localhost.Author>();
+        
+        list = service.GetAuthorInformation().ToList();
+        GridView1.DataSource = list;
         GridView1.DataBind();
     }
 
@@ -68,8 +71,11 @@ public partial class ListAuthor : System.Web.UI.Page
 
     protected void btnSearch_Click(object sender, EventArgs e)
     {
-        //AuthorModel authorModel = new AuthorModel();
+        List<localhost.Author> list = new List<localhost.Author>();
         string key_word = txtSearch.Text;
+        GridView1.DataSource = list;
+        GridView1.DataBind();
+        
         if (TypeSearch.SelectedValue == "1")
         {
             GridView1.DataSource = service.SearchAuthor(key_word, 1);
