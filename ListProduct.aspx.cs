@@ -27,25 +27,24 @@ public partial class ListProduct : System.Web.UI.Page
         int index = gridViewRow.RowIndex;
         String a = ListView.Rows[index].Cells[0].Text;
 
-        DataTable datable = service.getListProductToEdit(a);
-        foreach (DataRow item in datable.Rows)
-        {
-            Label1.Text = item[0].ToString();
-            Label2.Text = item[1].ToString();
-            Image1.ImageUrl = "~/imGProduct/" + item[2].ToString();
-            Label4.Text = item[3].ToString();
-            Label13.Text = item[4].ToString();
-            Label5.Text = item[12].ToString();
-            Label6.Text = item[5].ToString();
-            Label7.Text = item[6].ToString();
-            Label8.Text = item[7].ToString();
-            Label9.Text = item[8].ToString();
-            Label10.Text = item[9].ToString();
-            Label11.Text = item[10].ToString();
-            Label12.Text = item[11].ToString();
-            HyperLink1.NavigateUrl = "~/EditProduct.aspx?id=" + item[0].ToString();
+        localhost.Product product = service.getListProductToEdit(a);
+       
+            Label1.Text = product.id;
+            Label2.Text = product.name;
+            Image1.ImageUrl = "~/imGProduct/" + product.IMG;
+            Label4.Text = product.price.ToString();
+            Label13.Text = product.pages.ToString();
+            Label5.Text = product.weight.ToString();
+            Label6.Text = product.content;
+            Label7.Text = product.status;
+            Label8.Text = product.year_of_creation;
+            Label9.Text = product.producer;
+            Label10.Text = product.TypeName;
+            Label11.Text = product.AuthorName;
+            Label12.Text = product.repository.ToString();
+            HyperLink1.NavigateUrl = "~/EditProduct.aspx?id=" + product.id;
 
-        }
+        
     }
 
     protected void btnSearch_Click(object sender, EventArgs e)
