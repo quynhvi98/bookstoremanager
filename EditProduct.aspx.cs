@@ -64,7 +64,7 @@ public partial class EditProduct : System.Web.UI.Page
         price.Text = product.price.ToString();
         Pages.Text = product.pages.ToString();
         repository.Text = product.repository.ToString();
-        weight.Text =  product.weight.ToString();
+        weight.Text = product.weight.ToString();
         conten.Text = product.content;
         stt.Text = product.status;
         @Producer.SelectedValue = product.producer;
@@ -118,7 +118,7 @@ public partial class EditProduct : System.Web.UI.Page
         //ProducerModel producerModel = new ProducerModel();
         product.idProducer = service.GetIdProducerByName(@Producer.SelectedValue);
         // ProductTypeModel productTypeModel = new ProductTypeModel();
-        product.type = service.GetIdProductTypeByName(ProductType.SelectedValue);
+        product.type = service.GetIdProductTypeByName_ProductType(ProductType.SelectedValue);
         //AuthorModel authorModel = new AuthorModel();
         product.author = service.GetIdProductTypeByName(author.SelectedValue);
         // ProductModel productModel = new ProductModel();
@@ -160,7 +160,7 @@ public partial class EditProduct : System.Web.UI.Page
                 }
             }
 
-            categoryProductModel.AddListCategoryProduct(list, product.id);
+            service.AddListCategoryProduct(list.ToArray(), product.id);
 
 
         }

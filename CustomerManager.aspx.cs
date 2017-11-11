@@ -38,7 +38,7 @@ public partial class CustomerManager : System.Web.UI.Page
     protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
         localhost.Customer customer = new localhost.Customer();
-        CustomerModel customerModel = new CustomerModel();
+        //CustomerModel customerModel = new CustomerModel();
 
         string id = GridView1.DataKeys[e.RowIndex].Values[0].ToString();
         customer.id = int.Parse(id);

@@ -25,15 +25,15 @@
             <asp:Button class="btn btn-primary" ID="btnSearch" runat="server" Text="Tìm kiếm" OnClick="btnSearch_Click" Height="30px" />
             <br />
         </div>
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" Height="136px" Width="823px" DataKeyNames="_id" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" AllowPaging="True" PageIndex="10">
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" Height="136px" Width="823px" DataKeyNames="id" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" AllowPaging="True" PageIndex="10">
         <Columns>
-            <asp:BoundField DataField="_id" HeaderText="Mã KH" ReadOnly="True" />
-            <asp:BoundField DataField="_email" HeaderText="Email" ReadOnly="True" />
-            <asp:BoundField DataField="_user" HeaderText="Tên tài khoản" ReadOnly="True" />
-            <asp:BoundField DataField="_name" HeaderText="Tên khách hàng" ReadOnly="True" />
-            <asp:BoundField HeaderText="Tổng chi tiêu" DataField="_total_bill" ReadOnly="True" />
-            <asp:BoundField DataField="_adddress_full" HeaderText="Địa chỉ" ReadOnly="True" />
-            <asp:BoundField HeaderText="Trạng thái" DataField="_status" />
+            <asp:BoundField DataField="id" HeaderText="Mã KH" ReadOnly="True" />
+            <asp:BoundField DataField="email" HeaderText="Email" ReadOnly="True" />
+            <asp:BoundField DataField="user" HeaderText="Tên tài khoản" ReadOnly="True" />
+            <asp:BoundField DataField="name" HeaderText="Tên khách hàng" ReadOnly="True" />
+            <asp:BoundField HeaderText="Tổng chi tiêu" DataField="total_bill" ReadOnly="True" />
+            <asp:BoundField DataField="address_full" HeaderText="Địa chỉ" ReadOnly="True" />
+            <asp:BoundField HeaderText="Trạng thái" DataField="status" />
             <asp:TemplateField HeaderText="Mở/khóa TK">
                 <EditItemTemplate>
                     <asp:ImageButton ID="ImageButton2" runat="server" CommandName="Update" ImageUrl="~/image/icons8-Edit-15.png" />
