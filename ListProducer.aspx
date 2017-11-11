@@ -15,18 +15,18 @@
             <br />
         </div>
  
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="2" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" style="margin-top: 36px" DataKeyNames="_id" Height="16px" Width="581px">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="2" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" style="margin-top: 36px" DataKeyNames="id" Height="16px" Width="581px">
             <Columns>
-                <asp:BoundField DataField="_id" HeaderText="Mã NSX" >
+                <asp:BoundField DataField="id" HeaderText="Mã NSX" >
                 <ControlStyle Width="40px" />
                 <FooterStyle HorizontalAlign="Center" VerticalAlign="Middle" Wrap="True" />
                 <HeaderStyle Width="50px" HorizontalAlign="Center" VerticalAlign="Middle" />
                 <ItemStyle VerticalAlign="Middle" />
                 </asp:BoundField>
-                <asp:BoundField DataField="_name" HeaderText="Tên NSX" >
+                <asp:BoundField DataField="name" HeaderText="Tên NSX" >
                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" />
                 </asp:BoundField>
-                <asp:BoundField DataField="_description" HeaderText="Mô tả" >
+                <asp:BoundField DataField="description" HeaderText="Mô tả" >
                 <ControlStyle Width="100px" />
                 </asp:BoundField>
                 <asp:TemplateField HeaderText="Sửa">

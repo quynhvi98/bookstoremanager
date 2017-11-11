@@ -19,8 +19,10 @@ public partial class ListProducer : System.Web.UI.Page
     }
     private void loadData()
     {
-        //DataProcess dataProducer = new DataProcess();
-        GridView1.DataSource = service.GetProducerInformation();
+        List<localhost.Producer> list = new List<localhost.Producer>();
+
+        list = service.GetProducerInformation().ToList();
+        GridView1.DataSource = list;
         GridView1.DataBind();
     }
 
@@ -30,7 +32,7 @@ public partial class ListProducer : System.Web.UI.Page
         ProducerModel producerModel = new ProducerModel();
 
         string id = GridView1.DataKeys[e.RowIndex].Values[0].ToString();
-        producer.id = id;
+        producer.id = int.Parse(id);
         TextBox txtName = (TextBox)(GridView1.Rows[e.RowIndex].Cells[1].Controls[0]);
         producer.name = txtName.Text;
         TextBox txtDes = (TextBox)(GridView1.Rows[e.RowIndex].Cells[2].Controls[0]);
@@ -71,12 +73,12 @@ public partial class ListProducer : System.Web.UI.Page
         string key_word = txtSearch.Text;
         if (TypeSearch.SelectedValue == "1")
         {
-            GridView1.DataSource = producerModel.SearchProducer(key_word, 1);
+            GridView1.DataSource = service.SearchProducer(key_word, 1);
             GridView1.DataBind();
         }
         else
         {
-            GridView1.DataSource = producerModel.SearchProducer(key_word, 2);
+            GridView1.DataSource = service.SearchProducer(key_word, 2);
             GridView1.DataBind();
         }
     }

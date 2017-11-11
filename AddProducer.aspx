@@ -7,9 +7,8 @@
         <asp:Label ID="Label2" runat="server" Text="Tên NSX"></asp:Label>
         <asp:TextBox CssClass="form-control" ID="txtProducerName" runat="server"></asp:TextBox>
         <asp:RequiredFieldValidator ControlToValidate="txtProducerName" ID="RequiredFieldValidator1" runat="server" ErrorMessage="Vui lòng nhập tên nhà sản xuất"></asp:RequiredFieldValidator>
-        <asp:Label ID="Label3" runat="server" Text="Mô tả"></asp:Label>
+        <asp:Label ID="Label3" runat="server" Text="Mô tả"></asp:Label><br />
         <asp:TextBox CssClass="form-control" ID="txtProducerDescription" runat="server"></asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Vui lòng nhập mô tả"></asp:RequiredFieldValidator>
         <br />
         <asp:Button class="btn btn-primary" ID="btnAddProducer" runat="server" OnClick="btnAddProducer_Click" Text="Thêm NSX" />
     </div>

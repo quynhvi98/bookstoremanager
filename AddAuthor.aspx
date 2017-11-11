@@ -10,6 +10,8 @@
             <asp:RequiredFieldValidator ControlToValidate="txtAuthorName" ID="RequiredFieldValidator1" runat="server" ErrorMessage="Vui lòng nhập tên tác giả"></asp:RequiredFieldValidator>
         </div>
 
+
+
         <div>
             <asp:Label ID="Label3" runat="server" Text="Mô tả"></asp:Label>
         </div>

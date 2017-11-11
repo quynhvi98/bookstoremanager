@@ -17,11 +17,11 @@
         </div>
 
         
-             <asp:GridView CssClass="test"  ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataKeyNames="_id" Height="59px" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" Style="margin-top: 36px" Width="543px">
+             <asp:GridView CssClass="test"  ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" DataKeyNames="id_author" Height="59px" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" Style="margin-top: 36px" Width="543px">
             <Columns>
-                <asp:BoundField DataField="_id" HeaderText="Mã TG" />
-                <asp:BoundField DataField="_name_author" HeaderText="Tên tác giả" />
-                <asp:BoundField DataField="_description_author" HeaderText="Thông tin" />
+                <asp:BoundField DataField="id_author" HeaderText="Mã TG" />
+                <asp:BoundField DataField="name_author" HeaderText="Tên tác giả" />
+                <asp:BoundField DataField="description" HeaderText="Thông tin" />
                 <asp:TemplateField HeaderText="Sửa">
                     <EditItemTemplate>
                         <asp:ImageButton ID="ImageButton2" runat="server" CommandName="Update" ImageUrl="~/image/icons8-Save Close-15.png" />
