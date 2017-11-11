@@ -41,20 +41,20 @@ public partial class _Default : System.Web.UI.Page
         GridView1.EditIndex = e.NewEditIndex;
         LoadData();
         string id = GridView1.DataKeys[e.NewEditIndex].Values[0].ToString();
-        List<string> edit_item = new List<string>(service.DataTableToList(service.SearchOrder(id, 1)));
+        List<localhost.Order> edit_item = service.SearchOrder(id, 1).ToList();
 
         DropDownList TypePayment = (DropDownList)(GridView1.Rows[e.NewEditIndex].Cells[2].FindControl("DropDownList1") as DropDownList);
-        if (edit_item[2].Equals("Tiền mặt"))
+        if (edit_item[0].content.Equals("Tiền mặt"))
             TypePayment.SelectedValue = "1";
         else
             TypePayment.SelectedValue = "2";
         DropDownList StatusPayment = (DropDownList)(GridView1.Rows[e.NewEditIndex].Cells[3].FindControl("DropDownList2") as DropDownList);
-        if (edit_item[3].Equals("Đã thanh toán"))
+        if (edit_item[0].status_payment.Equals("Đã thanh toán"))
             StatusPayment.SelectedValue = "1";
         else
             StatusPayment.SelectedValue = "2";
         DropDownList StatusDelivery = (DropDownList)(GridView1.Rows[e.NewEditIndex].FindControl("DropDownList3") as DropDownList);
-        if (edit_item[4].Equals("Đã giao hàng"))
+        if (edit_item[0].status_delivery.Equals("Đã giao hàng"))
             StatusDelivery.SelectedValue = "1";
         else
             StatusDelivery.SelectedValue = "2";
@@ -69,7 +69,7 @@ public partial class _Default : System.Web.UI.Page
         string type_payment = txtTypePayment.SelectedValue.ToString();
         DropDownList txtStatusPayment = (DropDownList)(GridView1.Rows[e.RowIndex].Cells[3].FindControl("DropDownList2") as DropDownList);
         string status_payment = txtStatusPayment.SelectedItem.ToString();
-        DropDownList txtStatusDelivery = (DropDownList)(GridView1.Rows[e.RowIndex].FindControl("DropDownList3") as DropDownList);
+        DropDownList txtStatusDelivery = (DropDownList)(GridView1.Rows[e.RowIndex].Cells[4].FindControl("DropDownList3") as DropDownList);
         string status_delivery = txtStatusDelivery.SelectedItem.ToString();
         //DataProcess dt = new DataProcess();
         if (service.UpdateOrderProduct(id, type_payment, status_payment, status_delivery))

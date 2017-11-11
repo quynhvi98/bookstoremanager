@@ -32,7 +32,7 @@
         </div>
 
         <div style="float:left;margin-left:20px;margin-top:5px;">
-            <asp:GridView ID="GridView1" runat="server" Width="950px" AutoGenerateColumns="False" Height="73px" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" AllowPaging="True" DataKeyNames="_id" HorizontalAlign="Center" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" ShowFooter="True" HeaderStyle-HorizontalAlign="Center" RowStyle-HorizontalAlign="Center">
+            <asp:GridView ID="GridView1" runat="server" Width="950px" AutoGenerateColumns="False" Height="73px" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" AllowPaging="True" DataKeyNames="id" HorizontalAlign="Center" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" ShowFooter="True" HeaderStyle-HorizontalAlign="Center" RowStyle-HorizontalAlign="Center">
                 <Columns>
                     <asp:TemplateField HeaderText="Check All">
                         <FooterTemplate>
@@ -46,20 +46,20 @@
                         </ItemTemplate>
                         <HeaderStyle VerticalAlign="Middle" />
                     </asp:TemplateField>
-                    <asp:BoundField HeaderText="Mã đơn hàng" DataField="_id" ReadOnly="True">
+                    <asp:BoundField HeaderText="Mã đơn hàng" DataField="id" ReadOnly="True">
                         <FooterStyle HorizontalAlign="Right" />
                         <HeaderStyle HorizontalAlign="Center" />
                     </asp:BoundField>
-                    <asp:BoundField HeaderText="Tổng đơn hàng" DataField="_total_bill" ReadOnly="True" />
+                    <asp:BoundField HeaderText="Tổng đơn hàng" DataField="total_bill" ReadOnly="True" />
                     <asp:TemplateField HeaderText="Hình thức thanh toán">
                         <EditItemTemplate>
                             <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True">
                                 <asp:ListItem Value="1">Tiền mặt</asp:ListItem>
-                                <asp:ListItem Value="2">Thẻ ngân hàng</asp:ListItem>
+                                <asp:ListItem Value="2">Chuyển khoản ngân hàng</asp:ListItem>
                             </asp:DropDownList>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("_content") %>'></asp:Label>
+                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("content") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Trang thái thanh toán">
@@ -70,7 +70,7 @@
                             </asp:DropDownList>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="Label2" runat="server" Text='<%# Bind("_status_paymen") %>'></asp:Label>
+                            <asp:Label ID="Label2" runat="server" Text='<%# Bind("status_payment") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Trạng thái vận chuyển">
@@ -81,11 +81,11 @@
                             </asp:DropDownList>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("_status_delivery") %>'></asp:Label>
+                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("status_delivery") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="_status_bill" HeaderText="Trạng thái" ReadOnly="True" />
-                    <asp:BoundField HeaderText="Ngày khởi tạo" DataField="_date" ReadOnly="True" />
+                    <asp:BoundField DataField="status_bill" HeaderText="Trạng thái" ReadOnly="True" />
+                    <asp:BoundField HeaderText="Ngày khởi tạo" DataField="date" ReadOnly="True" />
                     <asp:TemplateField HeaderText="Chi tiết ">
                         <ItemTemplate>
                             <asp:ImageButton ID="ImageButton6" runat="server" ImageUrl="~/image/icons8-Eye-15.png" OnClick="ImageButton6_Click" />
@@ -123,13 +123,13 @@
 
 
         <div style="position: absolute; top: 500px; left: 620px;">
-            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" CellPadding="3" DataKeyNames="_id" ShowFooter="True" Width="600px" Height="106px" RowStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
+            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" CellPadding="3" DataKeyNames="_id_order" ShowFooter="True" Width="600px" Height="106px" RowStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
                 <Columns>
-                    <asp:BoundField DataField="_id" HeaderText="Mã sản phẩm" />
-                    <asp:BoundField DataField="_name" HeaderText="Tên sản phẩm" />
+                    <asp:BoundField DataField="_id_order" HeaderText="Mã sản phẩm" />
+                    <asp:BoundField DataField="_name_product" HeaderText="Tên sản phẩm" />
                     <asp:BoundField DataField="_quantity" HeaderText="Số lượng" />
                     <asp:BoundField DataField="_price" HeaderText="Đơn giá" />
-                    <asp:BoundField HeaderText="Thành tiền" DataField="total" />
+                    <asp:BoundField HeaderText="Thành tiền" DataField="_total" />
                 </Columns>
                 <FooterStyle BackColor="White" ForeColor="#000066" />
                 <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
