@@ -10,7 +10,10 @@ public partial class ProductStatistics : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Request.Cookies["account"] == null)
+        {
+            Response.Redirect("testlogin.aspx");
+        }
     }
 
     Service service = new Service();

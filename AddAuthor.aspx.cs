@@ -11,7 +11,10 @@ public partial class AddAuthor : System.Web.UI.Page
     Service service = new Service();
     protected void Page_Load(object sender, EventArgs e)
     {
-      
+        if (Request.Cookies["account"] == null)
+        {
+            Response.Redirect("testlogin.aspx");
+        }
     }
 
     protected void addAuthors_Click(object sender, EventArgs e)

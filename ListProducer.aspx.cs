@@ -12,6 +12,10 @@ public partial class ListProducer : System.Web.UI.Page
     Service service = new Service();
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Request.Cookies["account"] == null)
+        {
+            Response.Redirect("testlogin.aspx");
+        }
         if (!IsPostBack)
         {
             loadData();

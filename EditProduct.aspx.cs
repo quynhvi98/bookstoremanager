@@ -14,6 +14,10 @@ public partial class EditProduct : System.Web.UI.Page
     private String idGoc;
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Request.Cookies["account"] == null)
+        {
+            Response.Redirect("testlogin.aspx");
+        }
         if (Request.QueryString["id"] != null && !IsPostBack)
         {
             getdata();

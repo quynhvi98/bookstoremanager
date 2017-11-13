@@ -17,6 +17,10 @@ public partial class _Default : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Request.Cookies["account"] == null)
+        {
+            Response.Redirect("testlogin.aspx");
+        }
         GridView2.Visible = false;
         //DataProcess dp = new DataProcess();
         if (!IsPostBack)
